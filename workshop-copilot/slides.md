@@ -6,6 +6,7 @@ layout: cover
 transition: slide-left
 css: unocss
 highlighter: shiki
+lineNumbers: true
 ---
 
 # Dominando o GitHub Copilot
@@ -225,11 +226,11 @@ O Copilot responde com explicações, exemplos, sugestões de boas práticas, li
 }
 </style>
 
-<div :class="{ small: $slidev.nav.clicks >= 5 }">
+<div :class="{ small: $slidev.nav.clicks >= 7 }">
 
 > **Prompt**: Implementar validação de email para a entidade User
 
-```java {4-5|all}
+```java {1-2,6-7|4-5|all}
 public class User {
     private String name;
 
@@ -244,7 +245,7 @@ public class User {
 
 > **Prompt**: Implemente no UserController uma rota para cadastro de User com validação
 
-```java {0|4-8|all}
+```java {0|1-2,9|4-8|all}
 public class UserController {
     // Injeção do service e construtor omitidos
 
@@ -260,7 +261,7 @@ public class UserController {
 
 </div>
 
-<div v-click="5">
+<div v-click="7">
 
 **Passos Práticos**: 
 1. Navege até a classe `User.java` no seu editor
@@ -279,25 +280,136 @@ public class UserController {
 
 ## Exemplo em Angular - Serviço para API
 
-**Prompt**: "Criar um serviço para buscar usuários de uma API"
+<style>
+.small {
+  transform: scale(0.4);
+  margin: -80px 0;
+  transition: transform,margin 0.3s ease;
+}
+</style>
 
-```
+<div :class="{ small: $slidev.nav.clicks >= 3 }">
+
+> **Prompt**: Criar um serviço para buscar usuários de uma API no endereço "https://jsonplaceholder.typicode.com/users"
+
+```typescript {1,5-8,15|2-3,10-14|all}
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; 
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
 
-  getUsers() {
-    return this.http.get('/api/users');
+  constructor(private http: HttpClient) { }
+
+  getUsers(): Observable<any> {
+    return this.http.get('https://jsonplaceholder.typicode.com/users');
   }
 }
 ```
 
-**Passos Práticos**: Gere service com `ng generate service user`, aplique código, injete no componente e rode.
+</div>
+
+<div v-click="3">
+
+**Passos Práticos**: 
+1. Gere service com `ng generate service user`
+1. Navegue até o arquivo `user.service.ts`
+1. Use o Modo Ask para solicitar a criação de um serviço que busque usuários de uma API
+    > **Prompt**: Criar um serviço para buscar usuários de uma API no endereço "https://jsonplaceholder.typicode.com/users"
+1. Esperamos que seja adicionado o método `getUsers` no serviço, utilizando o `HttpClient` do Angular para fazer uma requisição GET para `https://jsonplaceholder.typicode.com/users`
+1. Copie o código gerado para o arquivo `user.service.ts`
+
+</div>
+
+---
+
+## Exemplo em Angular - Serviço para API
+
+<style>
+.small {
+  transform: scale(0.05);
+  margin: -230px 0;
+  transition: transform,margin 0.3s ease;
+}
+</style>
+
+<div :class="{ small: $slidev.nav.clicks >= 3 }">
+
+> **Prompt**: Consuma no UserListComponent o UserService para listar os usuários
+
+````md magic-move
+
+```typescript {*}
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
+@Component({
+  imports: [CommonModule],
+  selector: 'app-user-list',
+  template:  `
+  <ul>
+    <li *ngFor="let user of users">{{ user.name }}</li>
+  </ul>
+  `,
+})
+export class UserListComponent {
+  users = [
+    { name: 'Alice' },
+    { name: 'Bob' },
+    { name: 'Charlie' }
+  ];
+}
+```
+
+```typescript {3,15-23|all}
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+
+@Component({
+  imports: [CommonModule],
+  selector: 'app-user-list',
+  template:  `
+  <ul>
+    <li *ngFor="let user of users">{{ user.name }}</li>
+  </ul>
+  `,
+})
+export class UserListComponent implements OnInit {
+  users: any[] = [];
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe((data: any[]) => {
+      this.users = data;
+    });
+  }
+}
+```
+````
+
+</div>
+
+<div v-click="3">
+
+**Passos Práticos**: 
+1. Gere o service com `ng generate service user`
+1. Navegue até o arquivo `user.service.ts`
+1. Use o Modo Ask para solicitar a criação de um serviço que busque usuários de uma API
+    > **Prompt**: Criar um serviço para buscar usuários de uma API no endereço "https://jsonplaceholder.typicode.com/users"
+1. Esperamos que seja adicionado o método `getUsers` no serviço, utilizando o `HttpClient` do Angular para fazer uma requisição GET para `https://jsonplaceholder.typicode.com/users`
+1. Copie o código gerado para o arquivo `user.service.ts`
+1. Navegue até o arquivo `user-list.component.ts`
+1. Use o Modo Ask para solicitar a implementação do `UserListComponent` que consuma o `UserService` para listar os usuários
+    > **Prompt**: Consuma no UserListComponent o UserService para listar os usuários
+1. Esperamos que seja adicionado o método `ngOnInit` no componente, que chama o `UserService` para buscar os usuários
+1. Copie o código gerado para o arquivo `user-list.component.ts`
+
+</div>
 
 ---
 
