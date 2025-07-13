@@ -643,37 +643,49 @@ exemploRefatorado();
 
 ## Criando Prompts Personalizados
 
+<style>
+.small {
+  transform: scale(0.25);
+  margin: -130px 0;
+  transition: transform,margin 0.3s ease;
+}
+</style>
+
+<div :class="{ small: $slidev.nav.clicks >= 3 }">
+
 Prompts personalizados permitem reutilizar comandos comuns para gerar código ou respostas específicas, adaptando o Copilot ao seu fluxo de trabalho.
+
+```markdown {1-4|5-15|all}
+---
+mode: 'agent'
+description: 'Gerar novo controller utilizando Spring Boot' 
+---
+Your goal is to generate a new Spring Boot controller based on the templates in this repository.
+
+Ask for the controller name and any relevant endpoints if not provided.
+
+Requirements for the controller:
+* Use Spring Web annotations for defining endpoints
+* Always define request and response DTOs
+* Prefer constructor injection for dependencies
+* Use validation annotations for request parameters
+* Create unit tests for the controller
+* Create reusable validation schemas in separate files
+```
+
+</div>
+
+<div v-click="3">
+
+### Passos para Criar Prompts Personalizados
 
 1. Abra o VSCode e acesse as configurações: Pressione `Ctrl + ,` (ou `Cmd + ,` no Mac).
 1. Busque por `Chat: Prompt Files` e verifique se está habilitado.
-1. Crie o arquivo: Pressione `Ctrl + Shift + P` (ou `Cmd + Shift + P` no Mac), busque por "Chat: New Prompt File" e dê um nome (ex.: "gerar-controller"). O arquivo será criado com o nome `gerar-controller.prompt.md` na pasta `.github/prompts`.
+1. Crie o arquivo: Pressione `Ctrl + Shift + P` (ou `Cmd + Shift + P` no Mac), busque por "Chat: New Prompt File" e dê um nome (ex.: "generate-controller"). O arquivo será criado com o nome `generate-controller.prompt.md` na pasta `.github/prompts`.
 1. Escreva o prompt no arquivo Markdown, incluindo instruções, referências a arquivos usando Markdown ou a sintaxe `#file:../../web/index.ts`.
+1. No Chat, digite `/` seguido do nome do prompt (ex.: `/generate-controller`) para usar o prompt personalizado.
 
----
-
-## Usando Prompts Personalizados
-
-**Exemplo de Resultado**:
-```
-@RestController
-@RequestMapping("/api/[nome]")
-public class [Nome]Controller {
-    @GetMapping
-    public ResponseEntity> getAll() {
-        return ResponseEntity.ok([nome]Service.findAll());
-    }
-}
-```
-
-**Passos**: Invoque em arquivo vazio.
-
----
-
-## Outras Configurações Úteis
-
-- Ajuste o comportamento das sugestões.
-- Integre com outras extensões ou plugins.
+</div>
 
 ---
 
@@ -684,31 +696,20 @@ public class [Nome]Controller {
 
 ---
 
-## Exemplo em Java - Documentando Código Legado
+## Trabalhando com Código Legado - Exemplos
 
-**Prompt**: "Gerar documentação para esta classe"
+**Passos Práticos**: 
 
-```
-/**
- * Classe responsável por gerenciar usuários no sistema.
- */
-public class UserManager {
-    public void addUser(String name) {
-        // Adiciona usuário
-    }
-}
-```
+1. Abra um projeto real em que você trabalhe.
+1. Navegue até uma classe ou componente complexo.
+1. Use o prompt para solicitar uma explicação detalhada sobre a classe e suas dependências.
 
-**Passos Práticos**: Crie classe básica, aplique documentação.
+**Prompts**: 
 
----
+- "Explique o funcionamento desta classe como se fosse para um desenvolvedor júnior"
+- "Quais são as dependências desta classe e como elas interagem?"
+- "Gere um diagrama de sequência para o fluxo ABCD da classe XYZ"
+- "Refatore a classe XYZ para dividir a responsabilidade A e B em múltiplos serviços e implemente o padrão port and adapter para acesso ao banco de dados"
+- "Refatore o componente XYZ para melhorar o modo `standalone` do Angular"
+- "Modifique as propriedades do componente ABC para trabalhar com `input()` em vez de `@Input` 
 
-## Exemplo em Angular - Refatorando Componente
-
-**Prompt**: "Refatorar este componente para melhorar o desempenho"
-
-**Antes**: Componente com lógica pesada no template.  
-**Depois**: Lógica movida para o serviço, com template simplificado.
-
-**Passos Práticos**: Adicione lógica pesada, refatore via prompt.
-```
