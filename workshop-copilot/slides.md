@@ -7,6 +7,7 @@ transition: slide-left
 css: unocss
 highlighter: shiki
 lineNumbers: true
+mdc: true
 ---
 
 # Dominando o GitHub Copilot
@@ -415,74 +416,208 @@ export class UserListComponent implements OnInit {
 
 ## Casos de Uso para o Modo Ask
 
-- Resolver problemas específicos de codificação.
-- Aprender nova sintaxe ou frameworks.
-- Obter soluções alternativas para um problema.
+- Pedir explicações de trechos de código desconhecidos ou complexos (“O que essa função faz?”).
+
+<v-clicks>
+
+- Solicitar exemplos de uso de bibliotecas, funções ou APIs (“Como uso fetch para fazer uma requisição GET?”).
+- Obter sugestões de melhores práticas de programação para determinado contexto (“Qual a melhor forma de tratar erros em JavaScript?”).
+- Tirar dúvidas sobre sintaxe ou recursos de uma linguagem (“Como funciona o destructuring em JavaScript?”, “Como criar uma classe em Python?”).
+- Pedir ajuda para entender mensagens de erro (“O que significa esse erro TypeError: undefined is not a function?”).
+
+</v-clicks>
+
+---
+
+## Casos de Uso para o Modo Ask
+
+- Buscar explicações sobre padrões de projeto (“Explique o padrão Singleton.”).
+
+<v-clicks>
+
+- Obter referências para documentação oficial ou materiais de estudo (“Onde encontro a documentação do React Router?”).
+- Solicitar dicas para otimização de código ou refatoração (“Como posso melhorar a performance desse código?”).
+- Pedir ajuda na configuração de ferramentas ou ambientes (“Como configuro ESLint para um projeto React?”).
+- Perguntar sobre integração entre tecnologias (“Como conectar meu backend Node.js a um banco MongoDB?”).
+
+</v-clicks>
 
 ---
 
 ## Intervalo
 
-Pausa de 5 minutos para descanso e networking.
+<div v-if="counter > 0">
+  Pausa de
+  {{ Math.floor(counter / 60).toString().padStart(2, '0') }}:{{ (counter % 60).toString().padStart(2, '0') }}
+  minutos.
+</div>
+<div v-else>
+  Time's up!
+</div>
+
+<div>
+  <button @click="counter = 300">Reiniciar</button>
+</div>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const counter = ref(300)
+const timerInterval = ref(null)
+
+onMounted(() => {
+  timerInterval.value = setInterval(() => {
+    if (counter.value > 0) {
+      counter.value--
+    } else {
+      clearInterval(timerInterval.value)
+    }
+  }, 1000)
+})
+
+onUnmounted(() => {
+  clearInterval(timerInterval.value)
+})
+</script>
 
 ---
 
 ## Introdução ao Modo Agent
 
-- O que é o Modo Agent e como ele se diferencia dos outros recursos.
-- Ideal para tarefas complexas, como refatoração e geração de documentação.
+- O Modo Agent permite que o Copilot atue como um “agente” autônomo, que entende objetivos maiores e executa passos para atingi-los.
+- O agente pode, por exemplo: analisar um problema, propor mudanças, criar ou editar múltiplos arquivos, gerar pull requests, rodar testes, revisar código e até sugerir melhorias de arquitetura.
+- Ele funciona realizando ações no projeto, muitas vezes de forma iterativa: ele sugere, executa, valida e ajusta até completar a tarefa solicitada.
 
 ---
 
-## Usando o Modo Agent
+## Como o Modo Agent se diferencia dos outros recursos do Copilot?
 
-- Interaja com o Copilot como um assistente de IA.
-- Forneça instruções claras para tarefas específicas.
+### Autocomplete:
+Sugere automaticamente linhas ou blocos de código enquanto você digita, de forma passiva, sem executar ações diretas no projeto.
+
+### Modo Ask:
+Permite conversar com o Copilot, fazendo perguntas e recebendo respostas, exemplos ou explicações. Atua como um assistente de dúvidas e aprendizado.
+
+### Modo Agent:
+Atua de forma proativa e autônoma, executando tarefas completas, como refatorar código, corrigir bugs, implementar funcionalidades ou automatizar etapas do fluxo de trabalho.
 
 ---
 
-## Exemplo em Java - Refatoração
+## Exemplo de Refatoração
 
 **Antes**:
-```
-public void processUserData() {
-    // Lógica longa e confusa
+
+::code-group
+
+```java [Java]
+public class ExemploMalEscrito {
+    public static void main(String[] args) {
+        int[] numeros = new int[10];
+        for (int i = 0; i < 10; i++) {
+            numeros[i] = i + 1;
+        }
+        for (int i = 0; i < 10; i++) {
+            if (numeros[i] % 2 == 0) {
+                System.out.println("O número " + numeros[i] + " é par");
+            } else {
+                System.out.println("O número " + numeros[i] + " não é par");
+            }
+        }
+        int soma = 0;
+        for (int i = 0; i < 10; i++) {
+            soma = soma + numeros[i];
+        }
+        System.out.println("A soma é " + soma);
+    }
 }
 ```
 
-**Depois**:
-```
-public void processUserData() {
-    validateUser();
-    saveUser();
-    notifyUser();
+```typescript [TypeScript]
+function exemploMalEscrito() {
+  let numeros = [];
+  for (let i = 0; i < 10; i++) {
+    numeros[i] = i + 1;
+  }
+  for (let i = 0; i < 10; i++) {
+    if (numeros[i] % 2 === 0) {
+      console.log("O número " + numeros[i] + " é par");
+    } else {
+      console.log("O número " + numeros[i] + " não é par");
+    }
+  }
+  let soma = 0;
+  for (let i = 0; i < 10; i++) {
+    soma = soma + numeros[i];
+  }
+  console.log("A soma é " + soma);
 }
+
+exemploMalEscrito();
 ```
 
-**Passos Práticos**: Adicione método longo em `UserService`, use prompt no Agent para refatorar, teste.
+::
 
 ---
 
-## Exemplo em Angular - Documentação
+## Exemplo de Refatoração
 
-**Prompt**: "Gerar documentação para este componente"
+> **Prompt**: Refatore este código para torná-lo mais limpo, legível e eficiente. 
+> Use boas práticas da linguagem, evite repetições, quebre em funções menores quando possível e utilize recursos modernos disponíveis.
 
-```
-/**
- * Componente para exibir uma lista de usuários.
- * @example 
- */
-@Component({
-  selector: 'app-user-list',
-  template: `{{ user.name }}`
-})
-export class UserListComponent {
-  /** Lista de usuários a ser exibida */
-  users = [{ name: 'Alice' }, { name: 'Bob' }];
+---
+
+## Exemplo de Refatoração
+
+**Depois**:
+
+::code-group
+
+```java [Java]
+public class ExemploRefatorado {
+    public static void main(String[] args) {
+        int[] numeros = criarArraySequencial(1, 10);
+        imprimirParidade(numeros);
+        int soma = Arrays.stream(numeros).sum();
+        System.out.println("A soma é " + soma);
+    }
+
+    private static int[] criarArraySequencial(int inicio, int tamanho) {
+        return java.util.stream.IntStream.range(inicio, inicio + tamanho).toArray();
+    }
+
+    private static void imprimirParidade(int[] numeros) {
+        for (int numero : numeros) {
+            String paridade = (numero % 2 == 0) ? "par" : "não é par";
+            System.out.println("O número " + numero + " " + paridade);
+        }
+    }
 }
 ```
 
-**Passos Práticos**: Use componente existente, aplique documentação via prompt.
+```typescript [TypeScript]
+function criarArraySequencial(inicio: number, tamanho: number): number[] {
+    return Array.from({ length: tamanho }, (_, i) => inicio + i);
+}
+
+function imprimirParidade(numeros: number[]): void {
+    numeros.forEach(numero => {
+        const paridade = numero % 2 === 0 ? "par" : "não é par";
+        console.log(`O número ${numero} ${paridade}`);
+    });
+}
+
+function exemploRefatorado(): void {
+    const numeros = criarArraySequencial(1, 10);
+    imprimirParidade(numeros);
+    const soma = numeros.reduce((acc, curr) => acc + curr, 0);
+    console.log(`A soma é ${soma}`);
+}
+
+exemploRefatorado();
+```
+
+::
+
 
 ---
 
@@ -490,23 +625,30 @@ export class UserListComponent {
 
 - Forneça instruções detalhadas ao agente.
 - Revise e teste o código gerado.
-- Use para tarefas maiores, não apenas completions.
+- Use para tarefas maiores, não apenas *completions*.
+- Combine com o Modo Ask para esclarecer dúvidas durante o processo.
+- Use o Modo Agent para tarefas complexas, como refatoração de código legado, implementação de novas funcionalidades ou integração de sistemas.
 
 ---
 
 ## Personalizando o Copilot
 
+> No momento, só há suporte às instruções personalizadas de repositório para o Copilot Chat no Visual Studio, VS Code e no site do GitHub.
+
 - Como adaptar o Copilot para seus projetos.
 - Configuração de prompts personalizados.
 
-**Exemplo**: Em Settings > GitHub Copilot, crie "Gerar controller REST para [entidade]" e teste.
 
 ---
 
 ## Criando Prompts Personalizados
 
-- No VSCode: Configurações > GitHub Copilot > Custom Prompts.
-- Exemplo: "Gerar um controller REST Spring Boot para a entidade [nome]".
+Prompts personalizados permitem reutilizar comandos comuns para gerar código ou respostas específicas, adaptando o Copilot ao seu fluxo de trabalho.
+
+1. Abra o VSCode e acesse as configurações: Pressione `Ctrl + ,` (ou `Cmd + ,` no Mac).
+1. Busque por `Chat: Prompt Files` e verifique se está habilitado.
+1. Crie o arquivo: Pressione `Ctrl + Shift + P` (ou `Cmd + Shift + P` no Mac), busque por "Chat: New Prompt File" e dê um nome (ex.: "gerar-controller"). O arquivo será criado com o nome `gerar-controller.prompt.md` na pasta `.github/prompts`.
+1. Escreva o prompt no arquivo Markdown, incluindo instruções, referências a arquivos usando Markdown ou a sintaxe `#file:../../web/index.ts`.
 
 ---
 
