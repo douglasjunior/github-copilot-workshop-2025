@@ -689,6 +689,12 @@ Requirements for the controller:
 
 ---
 
+## Configurando Instruções Personalizadas
+
+TODO: 
+
+---
+
 ## Modo Agent com Código Legado
 
 - Uso do Modo Agent para melhorar código antigo.
@@ -713,3 +719,20 @@ Requirements for the controller:
 - "Refatore o componente XYZ para melhorar o modo `standalone` do Angular"
 - "Modifique as propriedades do componente ABC para trabalhar com `input()` em vez de `@Input` 
 
+--- 
+
+## 🔒 Considerações de Segurança
+
+TODO: 
+
+### Boas Práticas
+- **Sempre revisar** código gerado pela IA
+- **Não expor** dados sensíveis em prompts
+- **Configurar** .gitignore adequadamente
+- **Usar** custom instructions para políticas
+
+### Configurações Corporativas
+- **Telemetria**: Pode ser desabilitada
+- **Sugestões públicas**: Configurável
+- **Auditoria**: Logs disponíveis
+- **Compliance**: Políticas organizacionais
