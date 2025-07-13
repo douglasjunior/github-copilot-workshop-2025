@@ -20,7 +20,7 @@ Workshop Prático para Desenvolvedores
 
 - Ferramenta de autocomplete de código alimentada por IA.
 - Desenvolvida pela GitHub em parceria com a OpenAI.
-- Disponível como extensão para VSCode e plugin para IntelliJ[1].
+- Disponível como extensão para VSCode e plugin para IntelliJ.
 
 ---
 
@@ -28,7 +28,7 @@ Workshop Prático para Desenvolvedores
 
 - Utiliza modelos de machine learning treinados em código público.
 - Analisa o contexto do código para sugerir completions.
-- Pode gerar trechos de código, funções completas ou até arquivos inteiros[1].
+- Pode gerar trechos de código, funções completas ou até arquivos inteiros.
 
 ---
 
@@ -56,8 +56,10 @@ Workshop Prático para Desenvolvedores
 
 ## Introdução ao Autocomplete
 
-- O que é o Autocomplete no Copilot.
-- Como ele funciona em tempo real durante a codificação.
+- À medida que você digita, o Copilot analisa o contexto do seu código e exibe sugestões inline, geralmente em cinza claro.
+- Você pode aceitar a sugestão pressionando Tab ou uma tecla específica do seu editor.
+O Copilot pode sugerir desde nomes de variáveis até funções completas, loops, estruturas condicionais e até testes unitários.
+- O Autocomplete do Copilot vai além do autocomplete tradicional dos editores, pois usa inteligência artificial treinada em bilhões de linhas de código, tornando as sugestões mais inteligentes e adaptadas ao contexto.
 
 ---
 
@@ -74,6 +76,19 @@ Workshop Prático para Desenvolvedores
 ---
 
 ## Exemplo em Java - Endpoint REST
+
+> Digite na ordem sugerida para ver o Copilot em ação.
+
+<style>
+.small {
+  transform: scale(0.6);
+  margin-bottom: -50px;
+  margin-top: -50px;
+  transition: transform,margin 0.3s ease;
+}
+</style>
+
+<div :class="{ small: $slidev.nav.clicks >= 7 }">
 
 ```java {3,16|1-2|5|7-9|11|12-14|all}
 @RestController
@@ -92,18 +107,22 @@ public class UserController {
     }
 }
 ```
-<v-click>
-<br>
+</div>
+
+<div v-click="7">
 
 ### Passos Práticos: 
 - Crie `UserController.java` 
 - Implemente a rota de listagem de usuários usando sugestões do Copilot
 - Rode com `./gradlew :bootRun` e teste via curl ou postman.
-</v-click>
+
+</div>
 
 ---
 
 ## Exemplo em Angular - Componente
+
+> Digite na ordem sugerida para ver o Copilot em ação.
 
 <style>
 .small {
@@ -174,9 +193,9 @@ export class UserListComponent {
 ## Introdução ao Modo Ask
 
 - O que é o Modo Ask e como ele difere do Autocomplete.
-- Como usá-lo para obter sugestões de código específicas[1].
+- Como usá-lo para obter sugestões de código específicas.
 
-**Uso**: No chat do Copilot, forneça prompts claros[2].
+**Uso**: No chat do Copilot, forneça prompts claros.
 
 ---
 
@@ -184,7 +203,7 @@ export class UserListComponent {
 
 - Seja específico e claro ao fazer perguntas.
 - Forneça contexto quando necessário.
-- Exemplo: "Como validar um email em Spring Boot?"[1].
+- Exemplo: "Como validar um email em Spring Boot?".
 
 ---
 
@@ -199,7 +218,7 @@ public class User {
 }
 ```
 
-**Passos Práticos**: Adicione dependência de validação ao `pom.xml`, aplique sugestão, teste com POST inválido[1][2].
+**Passos Práticos**: Adicione dependência de validação ao `pom.xml`, aplique sugestão, teste com POST inválido.
 
 ---
 
@@ -223,7 +242,7 @@ export class UserService {
 }
 ```
 
-**Passos Práticos**: Gere service com `ng generate service user`, aplique código, injete no componente e rode[1][2].
+**Passos Práticos**: Gere service com `ng generate service user`, aplique código, injete no componente e rode.
 
 ---
 
@@ -231,27 +250,27 @@ export class UserService {
 
 - Resolver problemas específicos de codificação.
 - Aprender nova sintaxe ou frameworks.
-- Obter soluções alternativas para um problema[1].
+- Obter soluções alternativas para um problema.
 
 ---
 
 ## Intervalo
 
-Pausa de 5 minutos para descanso e networking[1].
+Pausa de 5 minutos para descanso e networking.
 
 ---
 
 ## Introdução ao Modo Agent
 
 - O que é o Modo Agent e como ele se diferencia dos outros recursos.
-- Ideal para tarefas complexas, como refatoração e geração de documentação[1].
+- Ideal para tarefas complexas, como refatoração e geração de documentação.
 
 ---
 
 ## Usando o Modo Agent
 
 - Interaja com o Copilot como um assistente de IA.
-- Forneça instruções claras para tarefas específicas[1].
+- Forneça instruções claras para tarefas específicas.
 
 ---
 
@@ -273,7 +292,7 @@ public void processUserData() {
 }
 ```
 
-**Passos Práticos**: Adicione método longo em `UserService`, use prompt no Agent para refatorar, teste[1][2].
+**Passos Práticos**: Adicione método longo em `UserService`, use prompt no Agent para refatorar, teste.
 
 ---
 
@@ -296,7 +315,7 @@ export class UserListComponent {
 }
 ```
 
-**Passos Práticos**: Use componente existente, aplique documentação via prompt[1][2].
+**Passos Práticos**: Use componente existente, aplique documentação via prompt.
 
 ---
 
@@ -304,23 +323,23 @@ export class UserListComponent {
 
 - Forneça instruções detalhadas ao agente.
 - Revise e teste o código gerado.
-- Use para tarefas maiores, não apenas completions[1].
+- Use para tarefas maiores, não apenas completions.
 
 ---
 
 ## Personalizando o Copilot
 
 - Como adaptar o Copilot para seus projetos.
-- Configuração de prompts personalizados[1].
+- Configuração de prompts personalizados.
 
-**Exemplo**: Em Settings > GitHub Copilot, crie "Gerar controller REST para [entidade]" e teste[2].
+**Exemplo**: Em Settings > GitHub Copilot, crie "Gerar controller REST para [entidade]" e teste.
 
 ---
 
 ## Criando Prompts Personalizados
 
 - No VSCode: Configurações > GitHub Copilot > Custom Prompts.
-- Exemplo: "Gerar um controller REST Spring Boot para a entidade [nome]"[1].
+- Exemplo: "Gerar um controller REST Spring Boot para a entidade [nome]".
 
 ---
 
@@ -338,21 +357,21 @@ public class [Nome]Controller {
 }
 ```
 
-**Passos**: Invoque em arquivo vazio[1][2].
+**Passos**: Invoque em arquivo vazio.
 
 ---
 
 ## Outras Configurações Úteis
 
 - Ajuste o comportamento das sugestões.
-- Integre com outras extensões ou plugins[1].
+- Integre com outras extensões ou plugins.
 
 ---
 
 ## Modo Agent com Código Legado
 
 - Uso do Modo Agent para melhorar código antigo.
-- Geração de documentação e refatoração de componentes complexos[1].
+- Geração de documentação e refatoração de componentes complexos.
 
 ---
 
@@ -371,7 +390,7 @@ public class UserManager {
 }
 ```
 
-**Passos Práticos**: Crie classe básica, aplique documentação[1][2].
+**Passos Práticos**: Crie classe básica, aplique documentação.
 
 ---
 
@@ -382,5 +401,5 @@ public class UserManager {
 **Antes**: Componente com lógica pesada no template.  
 **Depois**: Lógica movida para o serviço, com template simplificado.
 
-**Passos Práticos**: Adicione lógica pesada, refatore via prompt[1][2].
+**Passos Práticos**: Adicione lógica pesada, refatore via prompt.
 ```
