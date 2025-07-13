@@ -44,11 +44,12 @@ Workshop Prático para Desenvolvedores
 
 <v-click>
 
-### Demonstração Rápida: 
-  - Abra uma pasta vazia no VS Code
-  - Crie `hello.js`
-  - Digite `function helloWorld() {` e aceite sugestões
-  - Execute com `node hello.js` para ver "Hello, World!"
+### Demonstração Rápida:
+
+- Abra uma pasta vazia no VS Code
+- Crie `hello.js`
+- Digite `function helloWorld() {` e aceite sugestões
+- Execute com `node hello.js` para ver "Hello, World!"
 
 </v-click>
 
@@ -112,9 +113,9 @@ public class UserController {
 <div v-click="7">
 
 ### Passos Práticos: 
-- Crie `UserController.java` 
-- Implemente a rota de listagem de usuários usando sugestões do Copilot
-- Rode com `./gradlew :bootRun` e teste via curl ou postman.
+1. Crie `UserController.java` 
+1. Implemente a rota de listagem de usuários usando sugestões do Copilot
+1. Rode com `./gradlew :bootRun` e teste via curl ou postman.
 
 </div>
 
@@ -162,10 +163,10 @@ export class UserListComponent {
 <div v-click="5">
 
 ### Passos Práticos: 
-- Gere componente com `ng generate component user-list`
-- Implemente uma lista de usuários usando sugestões do Copilot
-- Adicione o componente ao módulo principal (`app.component.ts` e `app.component.html`)
-- Rode com `ng serve`
+1. Gere componente com `ng generate component user-list`
+1. Implemente uma lista de usuários usando sugestões do Copilot
+1. Adicione o componente ao módulo principal (`app.component.ts` e `app.component.html`)
+1. Rode com `ng serve`
 
 </div>
 
@@ -192,10 +193,11 @@ export class UserListComponent {
 
 ## Introdução ao Modo Ask
 
-- O que é o Modo Ask e como ele difere do Autocomplete.
-- Como usá-lo para obter sugestões de código específicas.
-
-**Uso**: No chat do Copilot, forneça prompts claros.
+- Permite que você faça perguntas em linguagem natural diretamente ao Copilot (por exemplo: “Explique essa função”, “Como usar o useEffect do React?”, “Como corrigir esse erro?”).
+- Funciona como uma janela de chat ou caixa de diálogo dentro do editor.
+O Copilot responde com explicações, exemplos, sugestões de boas práticas, links e orientações detalhadas.
+- Pode ser usado para dúvidas sobre o código atual, conceitos de programação, frameworks, bibliotecas, erros e até dúvidas sobre o próprio GitHub.
+- Ideal para aprender, tirar dúvidas rápidas ou aprofundar o entendimento sem sair do editor de código.
 
 ---
 
@@ -205,20 +207,73 @@ export class UserListComponent {
 - Forneça contexto quando necessário.
 - Exemplo: "Como validar um email em Spring Boot?".
 
+<v-click>
+
+**Curso Uni421:** [Conceitos Fundamentais de GenAI, LLMs e Prompt Engineering](https://db1.uni421.com.br/lms/#/aprendizagem/catalogo/infos_gerais/?idmatricula=0&secao=213&idcatalogo=2&idcurso=202)
+
+</v-click>
+
 ---
 
 ## Exemplo em Java - Validação de Entrada
 
-**Prompt**: "Implementar validação de email para a entidade User"
+<style>
+.small {
+  transform: scale(0.1);
+  margin: -165px 0;
+  transition: transform,margin 0.3s ease;
+}
+</style>
 
-```
+<div :class="{ small: $slidev.nav.clicks >= 5 }">
+
+> **Prompt**: Implementar validação de email para a entidade User
+
+```java {4-5|all}
 public class User {
-    @Email(message = "Email inválido")
+    private String name;
+
+    @Email
     private String email;
+
+    // Construtor, getters e setters
 }
 ```
 
-**Passos Práticos**: Adicione dependência de validação ao `pom.xml`, aplique sugestão, teste com POST inválido.
+<v-click>
+
+> **Prompt**: Implemente no UserController uma rota para cadastro de User com validação
+
+```java {0|4-8|all}
+public class UserController {
+    // Injeção do service e construtor omitidos
+
+    @PostMapping()
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+        userService.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+}
+```
+
+</v-click>
+
+</div>
+
+<div v-click="5">
+
+**Passos Práticos**: 
+1. Navege até a classe `User.java` no seu editor
+1. Use o Modo Ask para solicitar a implementação de uma validação de email
+    > **Prompt**: Implementar validação de email para a entidade User
+1. Esperamos que seja adicionado a propriedade `email` na classe `User`, bem como a anotação `@Email`, atualização do construtor e métodos `get` e `set`
+1. Navegue até a classe `UserController.java`
+1. Use o Modo Ask para solicitar a implementação de uma rota de cadastro de `User` com validação
+    > **Prompt**: Implemente no UserController uma rota para cadastro de User com validação
+1. Esperamos que seja adicionado o método `createUser` na classe `UserController`, bem como a anotação `@PostMapping` e o uso do `UserService` para salvar o usuário
+
+</div>
+
 
 ---
 
