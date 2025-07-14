@@ -633,7 +633,7 @@ exemploRefatorado();
 
 ## Personalizando o Copilot
 
-> No momento, só há suporte às instruções personalizadas de repositório para o Copilot Chat no Visual Studio, VS Code e no site do GitHub.
+> No momento, só há suporte às prompts personalizadas de repositório para o Copilot Chat no Visual Studio, VS Code e no site do GitHub. Já instruões personalizadas de repositório estão disponíveis para o Copilot Chat no JetBrains IDEs, Visual Studio, VS Code, Xcode, e no site do GitHub.
 
 - Como adaptar o Copilot para seus projetos.
 - Configuração de prompts personalizados.
@@ -660,17 +660,17 @@ Prompts personalizados permitem reutilizar comandos comuns para gerar código ou
 mode: 'agent'
 description: 'Gerar novo controller utilizando Spring Boot' 
 ---
-Your goal is to generate a new Spring Boot controller based on the templates in this repository.
+Seu objetivo é gerar um novo controller Spring Boot com base nos templates deste repositório.
 
-Ask for the controller name and any relevant endpoints if not provided.
+Peça o nome do controller e os endpoints relevantes, caso não sejam informados.
 
-Requirements for the controller:
-* Use Spring Web annotations for defining endpoints
-* Always define request and response DTOs
-* Prefer constructor injection for dependencies
-* Use validation annotations for request parameters
-* Create unit tests for the controller
-* Create reusable validation schemas in separate files
+Requisitos para o controller:
+* Utilize anotações do Spring Web para definir os endpoints
+* Sempre defina DTOs de request e response
+* Prefira injeção de dependências via construtor
+* Use anotações de validação nos parâmetros das requisições
+* Crie testes unitários para o controller
+* Crie esquemas de validação reutilizáveis em arquivos separados
 ```
 
 </div>
@@ -691,7 +691,41 @@ Requirements for the controller:
 
 ## Configurando Instruções Personalizadas
 
-TODO: 
+<style>
+.small {
+  transform: scale(0.7);
+  margin: -10px 0;
+  transition: transform,margin 0.3s ease;
+}
+</style>
+
+<div :class="{ small: $slidev.nav.clicks >= 3 }">
+
+As instruções personalizadas permitem adaptar o comportamento do Copilot Chat ao contexto do seu projeto ou equipe, tornando as respostas mais alinhadas às suas necessidades.
+
+```markdown {1-3|4-|all}
+---
+applyTo: '**'
+---
+- Sempre explique as sugestões de código de forma didática.
+- Priorize exemplos em Java e Angular.
+- Considere as convenções de código deste projeto.
+- Responda em português.
+- Sugira boas práticas e links para documentação oficial quando possível.
+```
+
+</div>
+
+<div v-click="3">
+
+### Passos para Configurar Instruções Personalizadas
+
+1. Crie o arquivo `.github/copilot-instructions.md`.
+1. Escreva as instruções no arquivo Markdown, detalhando preferências, padrões e exemplos.
+1. As instruções estarão disponíveis para o Chat assim que o arquivo for salvo.
+1. O Copilot Chat passará a considerar essas instruções em todas as respostas dentro do repositório.
+
+</div>
 
 ---
 
@@ -717,22 +751,31 @@ TODO:
 - "Gere um diagrama de sequência para o fluxo ABCD da classe XYZ"
 - "Refatore a classe XYZ para dividir a responsabilidade A e B em múltiplos serviços e implemente o padrão port and adapter para acesso ao banco de dados"
 - "Refatore o componente XYZ para melhorar o modo `standalone` do Angular"
-- "Modifique as propriedades do componente ABC para trabalhar com `input()` em vez de `@Input` 
+- "Modifique as propriedades do componente ABC para trabalhar com `input()` em vez de `@Input`
 
---- 
+---
 
-## 🔒 Considerações de Segurança
+## Boas Práticas
 
-TODO: 
+### ✅ **Sempre faça:**
+- Revise cuidadosamente o código gerado antes de usar.
+- Teste todas as funcionalidades implementadas.
+- Avalie possíveis riscos de segurança no código sugerido.
+- **Certifique-se de compreender o código antes de integrá-lo.**
 
-### Boas Práticas
-- **Sempre revisar** código gerado pela IA
-- **Não expor** dados sensíveis em prompts
-- **Configurar** .gitignore adequadamente
-- **Usar** custom instructions para políticas
+### ❌ **Evite:**
+- Aceitar código sem revisão crítica.
+- Utilizar IA para processar dados sensíveis ou confidenciais.
+- Depender exclusivamente das sugestões da IA.
+- Ignorar padrões e práticas recomendadas do projeto.
 
-### Configurações Corporativas
-- **Telemetria**: Pode ser desabilitada
-- **Sugestões públicas**: Configurável
-- **Auditoria**: Logs disponíveis
-- **Compliance**: Políticas organizacionais
+---
+
+## Referências
+
+- [Documentação Oficial do GitHub Copilot](https://docs.github.com/pt/copilot)
+- [Vídeo: Getting Started with GitHub Copilot (YouTube)](https://www.youtube.com/watch?v=0numa6jYF9o)
+- [Copilot para VS Code - Guia Oficial](https://code.visualstudio.com/docs/editor/copilot)
+- [Copilot para JetBrains - Guia Oficial](https://docs.github.com/pt/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-your-ide)
+- [Copilot Chat - Documentação](https://docs.github.com/pt/copilot/chat/)
+- [Curso Uni421: GenAI, LLMs e Prompt Engineering](https://db1.uni421.com.br/lms/#/aprendizagem/catalogo/infos_gerais/?idmatricula=0&secao=213&idcatalogo=2&idcurso=202)
