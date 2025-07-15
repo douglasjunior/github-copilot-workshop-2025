@@ -752,6 +752,7 @@ applyTo: '**'
 - "Refatore a classe XYZ para dividir a responsabilidade A e B em múltiplos serviços e implemente o padrão port and adapter para acesso ao banco de dados"
 - "Refatore o componente XYZ para melhorar o modo `standalone` do Angular"
 - "Modifique as propriedades do componente ABC para trabalhar com `input()` em vez de `@Input`
+- "Refatore a classe/componente para tornar o código testável, em seguida, gere testes unitários para a classe/componente"
 
 ---
 
@@ -773,9 +774,9 @@ applyTo: '**'
 
 ## Referências
 
-- [Documentação Oficial do GitHub Copilot](https://docs.github.com/pt/copilot)
-- [Vídeo: Getting Started with GitHub Copilot (YouTube)](https://www.youtube.com/watch?v=0numa6jYF9o)
-- [Copilot para VS Code - Guia Oficial](https://code.visualstudio.com/docs/editor/copilot)
-- [Copilot para JetBrains - Guia Oficial](https://docs.github.com/pt/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-your-ide)
-- [Copilot Chat - Documentação](https://docs.github.com/pt/copilot/chat/)
+- [Documentação Oficial do GitHub Copilot](https://docs.github.com/pt/copilot/)
+- [Copilot para VS Code - Documentação Oficial](https://docs.github.com/pt/copilot/get-started/quickstart?tool=vscode)
+- [Copilot para JetBrains - Documentação Oficial](https://docs.github.com/pt/copilot/get-started/quickstart?tool=jetbrains)
+- [Guia do Copilot Chat](https://docs.github.com/pt/copilot/tutorials/copilot-chat-cookbook)
+- [Playlist: GitHub Copilot (YouTube)](https://youtube.com/playlist?list=PL0lo9MOBetEHEHi9h0k_lPn0XZdEeYZDS&si=fCCiXKBmHae2xEyv)
 - [Curso Uni421: GenAI, LLMs e Prompt Engineering](https://db1.uni421.com.br/lms/#/aprendizagem/catalogo/infos_gerais/?idmatricula=0&secao=213&idcatalogo=2&idcurso=202)
