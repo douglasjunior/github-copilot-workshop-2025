@@ -475,7 +475,7 @@ export class UserListComponent implements OnInit {
   Time's up!
 </div>
 
-<button class="btn-default" @click="counter = 300">Reiniciar</button>
+<button class="btn-default" @click="resetCounter">Reiniciar</button>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
@@ -483,7 +483,9 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const counter = ref(300)
 const timerInterval = ref(null)
 
-onMounted(() => {
+const resetCounter = () => {
+  counter.value = 300
+  clearInterval(timerInterval.value)
   timerInterval.value = setInterval(() => {
     if (counter.value > 0) {
       counter.value--
@@ -491,6 +493,10 @@ onMounted(() => {
       clearInterval(timerInterval.value)
     }
   }, 1000)
+}
+
+onMounted(() => {
+  resetCounter()
 })
 
 onUnmounted(() => {
