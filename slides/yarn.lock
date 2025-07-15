@@ -1003,15 +1003,6 @@
     codemirror-theme-vars "^0.1.2"
     prism-theme-vars "^0.2.4"
 
-"@slidev/theme-seriph@^0.25.0":
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/@slidev/theme-seriph/-/theme-seriph-0.25.0.tgz#053bf054325ca79dd58a19a7a0ca27b70f273486"
-  integrity sha512-PnFQbn4I70+/cVie5iAr0Im6sYvnwjkO7Yj5KonTyJZFFJFytckLTrD3ijft/J4cRnz7OmSzTyQKNX1FN/x0YQ==
-  dependencies:
-    "@slidev/types" "^0.47.0"
-    codemirror-theme-vars "^0.1.2"
-    prism-theme-vars "^0.2.4"
-
 "@slidev/types@52.0.0":
   version "52.0.0"
   resolved "https://registry.yarnpkg.com/@slidev/types/-/types-52.0.0.tgz#f523893cbd2bbcabf541a78278f61e81d06d2c2e"
@@ -1034,6 +1025,11 @@
     vite-plugin-vue-server-ref "^1.0.0"
     vue "^3.5.17"
     vue-router "^4.5.1"
+
+"@slidev/types@^0.42.5":
+  version "0.42.11"
+  resolved "https://registry.yarnpkg.com/@slidev/types/-/types-0.42.11.tgz#a9c806aa3a15df615f8439052efb89e510664576"
+  integrity sha512-K7+UWzEQpUe3eEFs7ktm3tw17Ke9ZOJPTy7yGSlZfWl4jCTf9Z0HNKECPLQ3JGL6EkJ4Wyy1y0HE92/20cTn0Q==
 
 "@slidev/types@^0.47.0":
   version "0.47.5"
@@ -4283,6 +4279,16 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
+slidev-theme-dracula@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/slidev-theme-dracula/-/slidev-theme-dracula-0.2.0.tgz#15802c504e8d7dc58db9d3d80138b39e9595d984"
+  integrity sha512-ndMD27+gUNYt9aXrb4/0vSBHKP007mpD2eCJppzhqXDG1DmN0Q6I6iFz+QvIjOPDKzzPjoYZbsWp6lPLJjgs9g==
+  dependencies:
+    "@slidev/types" "^0.42.5"
+    codemirror-theme-vars "^0.1.2"
+    prism-theme-vars "^0.2.4"
+    theme-vitesse "^0.7.2"
+
 source-map-js@^1.0.1, source-map-js@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.1.tgz#1ce5650fddd87abc099eda37dcff024c2667ae46"
@@ -4388,6 +4394,11 @@ super-regex@^0.2.0:
     clone-regexp "^3.0.0"
     function-timeout "^0.1.0"
     time-span "^5.1.0"
+
+theme-vitesse@^0.7.2:
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/theme-vitesse/-/theme-vitesse-0.7.9.tgz#b241a3d004dc14766aa3686524507155fdffccbb"
+  integrity sha512-wgxHWOIEcIBp/5MAdO8Z5c0vdKy5J5008Kqt/uOYruel9oJ4TrvH3qXgCsatp4ImROd1UWsIgQ3C0R8db38qgA==
 
 time-span@^5.1.0:
   version "5.1.0"

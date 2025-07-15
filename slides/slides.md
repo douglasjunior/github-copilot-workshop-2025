@@ -1,14 +1,18 @@
 ---
-theme: seriph
+theme: dracula
 background: ./images/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg
 title: Dominando o GitHub Copilot - Workshop Prático
 layout: cover
 transition: slide-left
-css: unocss
-highlighter: shiki
 lineNumbers: true
 mdc: true
 ---
+
+<style>
+h2 {
+  margin-bottom: 0.8em;
+}
+</style>
 
 # Dominando o GitHub Copilot
 
@@ -42,11 +46,10 @@ Workshop Prático para Desenvolvedores
 - Auxilia na depuração e refatoração.
 
 <br>
-<br>
 
 <v-click>
 
-### Demonstração Rápida:
+**Demonstração Rápida**:
 
 - Abra uma pasta vazia no VS Code
 - Crie `hello.js`
@@ -114,7 +117,7 @@ public class UserController {
 
 <div v-click="7">
 
-### Passos Práticos: 
+**Passos Práticos**: 
 1. Crie `UserController.java` 
 1. Implemente a rota de listagem de usuários usando sugestões do Copilot
 1. Rode com `./gradlew :bootRun` e teste via curl ou postman.
@@ -124,8 +127,6 @@ public class UserController {
 ---
 
 ## Exemplo em Angular - Componente
-
-> Digite na ordem sugerida para ver o Copilot em ação.
 
 <style>
 .small {
@@ -137,6 +138,8 @@ public class UserController {
 </style>
 
 <div :class="{ small: $slidev.nav.clicks >= 5 }">
+
+> Digite na ordem sugerida para ver o Copilot em ação.
 
 ```typescript {1,4,5,12,13,19|2,6|7-11|14-18|all}
 import { Component } from '@angular/core';
@@ -164,7 +167,7 @@ export class UserListComponent {
 
 <div v-click="5">
 
-### Passos Práticos: 
+**Passos Práticos**: 
 1. Gere componente com `ng generate component user-list`
 1. Implemente uma lista de usuários usando sugestões do Copilot
 1. Adicione o componente ao módulo principal (`app.component.ts` e `app.component.html`)
@@ -176,6 +179,8 @@ export class UserListComponent {
 
 ## Dicas para Uso Eficaz do Autocomplete
 
+**Dicas**
+
 - Escreva comentários claros para orientar as sugestões.
 - Use nomes de variáveis e funções significativos.
 - Aceite sugestões seletivamente, verificando a lógica.
@@ -183,7 +188,9 @@ export class UserListComponent {
 
 <v-click>
 
-## Limitações do Autocomplete
+<br>
+
+**Limitações**
 
 - Pode sugerir código incorreto ou inseguro.
 - Não substitui o entendimento do código.
@@ -222,12 +229,12 @@ O Copilot responde com explicações, exemplos, sugestões de boas práticas, li
 <style>
 .small {
   transform: scale(0.1);
-  margin: -165px 0;
+  margin: -190px 0;
   transition: transform,margin 0.3s ease;
 }
 </style>
 
-<div :class="{ small: $slidev.nav.clicks >= 7 }">
+<div :class="{ small: $slidev.nav.clicks >= 6 }">
 
 > **Prompt**: Implementar validação de email para a entidade User
 
@@ -242,7 +249,7 @@ public class User {
 }
 ```
 
-<v-click>
+<br />
 
 > **Prompt**: Implemente no UserController uma rota para cadastro de User com validação
 
@@ -258,11 +265,9 @@ public class UserController {
 }
 ```
 
-</v-click>
-
 </div>
 
-<div v-click="7">
+<div v-click="6">
 
 **Passos Práticos**: 
 1. Navege até a classe `User.java` no seu editor
@@ -284,7 +289,7 @@ public class UserController {
 <style>
 .small {
   transform: scale(0.4);
-  margin: -80px 0;
+  margin: -90px 0;
   transition: transform,margin 0.3s ease;
 }
 </style>
@@ -331,8 +336,8 @@ export class UserService {
 
 <style>
 .small {
-  transform: scale(0.05);
-  margin: -230px 0;
+  transform: scale(0.3);
+  margin: -155px 0;
   transition: transform,margin 0.3s ease;
 }
 </style>
@@ -365,7 +370,7 @@ export class UserListComponent {
 }
 ```
 
-```typescript {3,15-23|all}
+```typescript {3,15-21|all}
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
@@ -381,9 +386,7 @@ import { UserService } from '../user.service';
 })
 export class UserListComponent implements OnInit {
   users: any[] = [];
-
   constructor(private userService: UserService) {}
-
   ngOnInit() {
     this.userService.getUsers().subscribe((data: any[]) => {
       this.users = data;
@@ -397,15 +400,9 @@ export class UserListComponent implements OnInit {
 
 <div v-click="3">
 
-**Passos Práticos**: 
-1. Gere o service com `ng generate service user`
-1. Navegue até o arquivo `user.service.ts`
-1. Use o Modo Ask para solicitar a criação de um serviço que busque usuários de uma API
-    > **Prompt**: Criar um serviço para buscar usuários de uma API no endereço "https://jsonplaceholder.typicode.com/users"
-1. Esperamos que seja adicionado o método `getUsers` no serviço, utilizando o `HttpClient` do Angular para fazer uma requisição GET para `https://jsonplaceholder.typicode.com/users`
-1. Copie o código gerado para o arquivo `user.service.ts`
+**Passos Práticos**:
 1. Navegue até o arquivo `user-list.component.ts`
-1. Use o Modo Ask para solicitar a implementação do `UserListComponent` que consuma o `UserService` para listar os usuários
+1. Use o Modo Ask para solicitar a modificação do `UserListComponent` para que consuma o `UserService` para listar os usuários
     > **Prompt**: Consuma no UserListComponent o UserService para listar os usuários
 1. Esperamos que seja adicionado o método `ngOnInit` no componente, que chama o `UserService` para buscar os usuários
 1. Copie o código gerado para o arquivo `user-list.component.ts`
@@ -455,9 +452,9 @@ export class UserListComponent implements OnInit {
   Time's up!
 </div>
 
-<div>
-  <button @click="counter = 300">Reiniciar</button>
-</div>
+<br>
+
+<button class="btn-default" @click="counter = 300">Reiniciar</button>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
@@ -492,13 +489,16 @@ onUnmounted(() => {
 
 ## Como o Modo Agent se diferencia dos outros recursos do Copilot?
 
-### Autocomplete:
+- **Autocomplete**:
+
 Sugere automaticamente linhas ou blocos de código enquanto você digita, de forma passiva, sem executar ações diretas no projeto.
 
-### Modo Ask:
+- **Modo Ask**:
+
 Permite conversar com o Copilot, fazendo perguntas e recebendo respostas, exemplos ou explicações. Atua como um assistente de dúvidas e aprendizado.
 
-### Modo Agent:
+- **Modo Agent**:
+
 Atua de forma proativa e autônoma, executando tarefas completas, como refatorar código, corrigir bugs, implementar funcionalidades ou automatizar etapas do fluxo de trabalho.
 
 ---
@@ -558,10 +558,15 @@ exemploMalEscrito();
 ::
 
 ---
+layout: center
+---
 
 ## Exemplo de Refatoração
 
+<br>
+
 > **Prompt**: Refatore este código para torná-lo mais limpo, legível e eficiente. 
+
 > Use boas práticas da linguagem, evite repetições, quebre em funções menores quando possível e utilize recursos modernos disponíveis.
 
 ---
@@ -677,7 +682,7 @@ Requisitos para o controller:
 
 <div v-click="3">
 
-### Passos para Criar Prompts Personalizados
+**Passos Práticos**:
 
 1. Abra o VSCode e acesse as configurações: Pressione `Ctrl + ,` (ou `Cmd + ,` no Mac).
 1. Busque por `Chat: Prompt Files` e verifique se está habilitado.
@@ -718,7 +723,7 @@ applyTo: '**'
 
 <div v-click="3">
 
-### Passos para Configurar Instruções Personalizadas
+**Passos Práticos**:
 
 1. Crie o arquivo `.github/copilot-instructions.md`.
 1. Escreva as instruções no arquivo Markdown, detalhando preferências, padrões e exemplos.
@@ -738,11 +743,25 @@ applyTo: '**'
 
 ## Trabalhando com Código Legado - Exemplos
 
+<style>
+.small {
+  transform: scale(0.7);
+  margin: -10px 0;
+  transition: transform,margin 0.3s ease;
+}
+</style>
+
+<div :class="{ small: $slidev.nav.clicks >= 1 }">
+
 **Passos Práticos**: 
 
 1. Abra um projeto real em que você trabalhe.
 1. Navegue até uma classe ou componente complexo.
 1. Use o prompt para solicitar uma explicação detalhada sobre a classe e suas dependências.
+
+</div>
+
+<div v-click="1">
 
 **Prompts**: 
 
@@ -754,17 +773,19 @@ applyTo: '**'
 - "Modifique as propriedades do componente ABC para trabalhar com `input()` em vez de `@Input`
 - "Refatore a classe/componente para tornar o código testável, em seguida, gere testes unitários para a classe/componente"
 
+</div>
+
 ---
 
 ## Boas Práticas
 
-### ✅ **Sempre faça:**
+**✅ Sempre faça:**
 - Revise cuidadosamente o código gerado antes de usar.
 - Teste todas as funcionalidades implementadas.
 - Avalie possíveis riscos de segurança no código sugerido.
 - **Certifique-se de compreender o código antes de integrá-lo.**
 
-### ❌ **Evite:**
+**❌ Evite:**
 - Aceitar código sem revisão crítica.
 - Utilizar IA para processar dados sensíveis ou confidenciais.
 - Depender exclusivamente das sugestões da IA.
@@ -780,3 +801,4 @@ applyTo: '**'
 - [Guia do Copilot Chat](https://docs.github.com/pt/copilot/tutorials/copilot-chat-cookbook)
 - [Playlist: GitHub Copilot (YouTube)](https://youtube.com/playlist?list=PL0lo9MOBetEHEHi9h0k_lPn0XZdEeYZDS&si=fCCiXKBmHae2xEyv)
 - [Curso Uni421: GenAI, LLMs e Prompt Engineering](https://db1.uni421.com.br/lms/#/aprendizagem/catalogo/infos_gerais/?idmatricula=0&secao=213&idcatalogo=2&idcurso=202)
+
