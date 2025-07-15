@@ -6,6 +6,7 @@ layout: cover
 transition: slide-left
 lineNumbers: true
 mdc: true
+selectable: true
 ---
 
 <style>
