@@ -38,6 +38,8 @@ Workshop Prático para Desenvolvedores
 
 **Por**: Douglas Nassif (douglas.junior@db1.com.br)
 
+**Repositório**: https://github.com/douglasjunior/github-copilot-workshop-2025
+
 ---
 
 ## O que é o GitHub Copilot?
@@ -91,6 +93,8 @@ O Copilot pode sugerir desde nomes de variáveis até funções completas, loops
 
 - Ative a extensão do Copilot.
 - Comece a digitar e aceite sugestões com a tecla Tab.
+
+<br>
 
 ## Usando o Autocomplete no IntelliJ
 
