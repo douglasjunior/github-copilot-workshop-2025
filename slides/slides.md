@@ -1,6 +1,6 @@
 ---
 theme: dracula
-background: ./images/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg
+background: ./mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg
 title: Dominando o GitHub Copilot - Workshop Prático
 layout: cover
 transition: slide-left
