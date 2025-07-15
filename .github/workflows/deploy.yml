@@ -34,7 +34,7 @@ jobs:
         working-directory: slides
 
       - name: Build
-        run: yarn build
+        run: yarn build --base /${{github.event.repository.name}}/
         working-directory: slides
 
       - name: Setup Pages
